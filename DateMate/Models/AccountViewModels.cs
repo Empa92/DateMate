@@ -70,6 +70,23 @@ namespace DateMate.Models
         public string Email { get; set; }
 
         [Required]
+        [Display(Name = "NickName")]
+        public string NickName { get; set; }
+
+        public string  UserName { get; set; }
+
+        [Required]
+        [Display(Name = "Location")]
+        public string Location { get; set; }
+
+        [Required]
+        [Display(Name = "Fabric")]
+        public string Fabric { get; set; }
+
+        [Display(Name = "UserPhoto")]
+        public byte[] UserPhoto { get; set; }
+
+        [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
