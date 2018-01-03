@@ -1,6 +1,7 @@
 ﻿using DateMate.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -21,8 +22,37 @@ namespace DateMate.Controllers
                 return View(posts);
         }
 
-        public ActionResult Create()
+        public ActionResult Create(string id)
         {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(Post post, string id)
+        {
+
+            var userName = User.Identity.Name;
+
+            var user = db.Users.Single(x => x.UserName == userName);
+
+            post.From = user;
+
+            var toUser = db.Users.Single(x => x.Id == id);
+            post.To = toUser;
+
+            db.Posts.Add(post);
+
+            //if (upload != null && upload.ContentLength > 0)
+            //{
+            //    post.Filename = upload.FileName;
+            //    post.ContentType = upload.ContentType;
+
+            //    using (var reader = new BinaryReader(upload.InputStream))
+            //    {
+            //        post.File = reader.ReadBytes(upload.ContentLength);
+            //    }
+            //}
+
+            db.SaveChanges();
             return View();
         }
     }

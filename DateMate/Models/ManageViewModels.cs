@@ -7,6 +7,10 @@ namespace DateMate.Models
 {
     public class IndexViewModel
     {
+        public string Fabric { get; set; }
+        public string Location { get; set; }
+        public string NickName { get; set; }
+        public string Id { get; set; }
         public bool HasPassword { get; set; }
         public IList<UserLoginInfo> Logins { get; set; }
         public string PhoneNumber { get; set; }

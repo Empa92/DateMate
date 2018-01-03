@@ -1,4 +1,4 @@
-﻿@model DateMate.Models.ApplicationUser
+﻿@model DateMate.Models.ProfileViewModel
 
 @{
     ViewBag.Title = "SeeProfile";
@@ -11,52 +11,74 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.NickName)
+            @Html.DisplayNameFor(model => model.Users.NickName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NickName)
+            @Html.DisplayFor(model => model.Users.NickName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Location)
+            @Html.DisplayNameFor(model => model.Users.Location)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Location)
+            @Html.DisplayFor(model => model.Users.Location)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Fabric)
+            @Html.DisplayNameFor(model => model.Users.Fabric)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Fabric)
+            @Html.DisplayFor(model => model.Users.Fabric)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
+            @Html.DisplayNameFor(model => model.Users.PhoneNumber)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
+            @Html.DisplayFor(model => model.Users.PhoneNumber)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UserName)
+            @Html.DisplayNameFor(model => model.Users.UserName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.UserName)
+            @Html.DisplayFor(model => model.Users.UserName)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.UserPhoto)
+            @Html.DisplayNameFor(model => model.Users.UserPhoto)
         </dt>
         <dd>
             <img src="@Url.Action("Image", new {id = Model.Id})" />
         </dd>
-
     </dl>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Posts.Single().Text)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Posts)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.From.NickName): @Html.DisplayFor(modelItem => item.Text)
+                    </td>
+                    @*<td>
+                        <img src="@Url.Action("Image", new { id = item.Id})" />
+                    </td>*@
+                </tr>
+            }
+            </table>
+
+        @Html.ActionLink("New Post", "Create", "Posts", new { id = Model.Id }, new { })
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

@@ -11,7 +11,7 @@ using DateMate.Models;
 namespace DateMate.Controllers
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -64,8 +64,13 @@ namespace DateMate.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
+            var user = db.Users.Find(userId);
             var model = new IndexViewModel
             {
+                NickName = user.NickName,
+                Location = user.Location,
+                Fabric = user.Fabric,
+                Id = user.Id,
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DateMate.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
@@ -10,61 +11,42 @@ namespace DateMate.Controllers
 {
     public class ExploreController : BaseController
     {
+        private List<ApplicationUser> users;
         // GET: Explore
         public ActionResult Index()
         {
             return View();
         }
 
+        [HttpPost]
         public ActionResult Explore()
-        {
-            var users = db.Users.ToList();
+        { 
+            users = db.Users.ToList();
             return View(users);
         }
+
+
 
         public ActionResult SeeProfile(string id)
         {
             var user = db.Users.Find(id);
-            return View(user);
+            var posts = db.Posts.Include(x => x.From).Where(x => x.To.Id == id).ToList();
+            return View(new ProfileViewModel { Id = id, Users = user, Posts = posts });
         }
 
-        public FileContentResult Image(string id)
+        
+        public ActionResult Explore(string searchString)
         {
-            if (User.Identity.IsAuthenticated)
+            var users = from m in db.Users
+                         select m;
+
+            if (!String.IsNullOrEmpty(searchString))
             {
-
-                //if (id == null)
-                //{
-                //    string fileName = HttpContext.Server.MapPath(@"~/Images/noImg.png");
-
-                //    byte[] imageData = null;
-                //    FileInfo fileInfo = new FileInfo(fileName);
-                //    long imageFileLength = fileInfo.Length;
-                //    FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
-                //    BinaryReader br = new BinaryReader(fs);
-                //    imageData = br.ReadBytes((int)imageFileLength);
-
-                //    return File(imageData, "image/png");
-
-                //}
-                // to get the user details to load user Image
-                var user = db.Users.Single(x => x.Id == id);
-
-                return new FileContentResult(user.UserPhoto, "image/jpeg");
+                users = users.Where(s => s.NickName.Contains(searchString));
             }
-            else
-            {
-                string fileName = HttpContext.Server.MapPath(@"~/Images/noImg.png");
 
-                byte[] imageData = null;
-                FileInfo fileInfo = new FileInfo(fileName);
-                long imageFileLength = fileInfo.Length;
-                FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
-                BinaryReader br = new BinaryReader(fs);
-                imageData = br.ReadBytes((int)imageFileLength);
-                return File(imageData, "image/png");
-
-            }
+            return View(users.ToList());
         }
     }
+    
 }

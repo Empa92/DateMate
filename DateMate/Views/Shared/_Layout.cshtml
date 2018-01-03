@@ -25,6 +25,15 @@
                     @if (Request.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Explore mates", "Explore", "Explore")</li>
+
+                        <li>@using (Html.BeginForm("Explore", "Explore", FormMethod.Get))
+                        {
+                            <p>
+                                @Html.TextBox("SearchString") 
+                                <input type="submit" value="Sök" />
+                            </p>
+                        }
+                        </li>
                     }
                     else
                     {
