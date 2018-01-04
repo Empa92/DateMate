@@ -70,11 +70,19 @@
                 </tr>
             }
             </table>
-@Html.ActionLink("New Post", "Create", "Posts", new { id = Model.Id }, new { })
+<div>
+        @Html.ActionLink("New Post", "Create", "Posts", new { id = Model.Id }, new { @type = "button", @class = "btn btn-primary" })
+</div>
+<div>
+    @if (User.Identity.GetUserId() == Model.Id)
+    {
+        @Html.ActionLink("Edit profile", "EditProfile", "Manage", new { id = Model.Id }, new { @type = "button", @class = "btn btn-primary" })
+    }
+</div>
+<div>
+    @if (User.Identity.GetUserId() != Model.Id)
+    {
+        @Html.ActionLink("Send friend request", "SendFriendRequest", "Friend", new { id = Model.Id }, new { @type = "button", @class = "btn btn-primary"})
+    }
+</div>
 
-@if (User.Identity.GetUserId() == Model.Id)
-{
-    <button type="button" class="btn btn-primary">
-        @Html.ActionLink("Edit profile", "EditProfile", "Manage", new { id = Model.Id }, new { })
-    </button>
-}

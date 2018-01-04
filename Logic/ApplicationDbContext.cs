@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Logic;
 
 namespace DateMate.Models
 {
@@ -17,6 +18,8 @@ namespace DateMate.Models
         }
 
         public DbSet<Post> Posts { get; set; }
+        public DbSet<Friend> Friends { get; set; }
+        public DbSet<FriendRequest> FriendRequests { get; set; }
 
         //public System.Data.Entity.DbSet<DateMate.Models.ApplicationUser> ApplicationUsers { get; set; }
 

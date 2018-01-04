@@ -14,6 +14,8 @@ namespace DateMate.Models
         public string Fabric { get; set; }
         public byte[] UserPhoto { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
+        public virtual ICollection<Friend> Friends { get; set; }
+        public virtual ICollection<FriendRequest> FriendRequests { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

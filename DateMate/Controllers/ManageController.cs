@@ -113,7 +113,11 @@ namespace DateMate.Controllers
                         imageData = binary.ReadBytes(poImgFile.ContentLength);
                     }
 
-                    user.UserPhoto = imageData;
+                    if(imageData.Length > 0)
+                    {
+                        user.UserPhoto = imageData;
+                    }
+                    
                 }
                 
                 user.NickName = model.Nickname;
