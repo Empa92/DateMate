@@ -6,56 +6,49 @@
 
 <h2>SeeProfile</h2>
 
-<div>
-    <h4>ApplicationUser</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Users.NickName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Users.NickName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Users.Location)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Users.Location)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Users.Fabric)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Users.Fabric)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Users.PhoneNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Users.PhoneNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Users.UserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Users.UserName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Users.UserPhoto)
-        </dt>
-        <dd>
-            <img src="@Url.Action("Image", new {id = Model.Id})" />
-        </dd>
-    </dl>
+<div style="display: flex; justify-content: center">
+    <div>
+        <dl class="dl-horizontal">
+            <dd>
+                <img width="150" height="auto" src="@Url.Action("Image", new {id = Model.Id})" />
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Users.NickName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Users.NickName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Users.Location)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Users.Location)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Users.Fabric)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Users.Fabric)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Users.PhoneNumber)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Users.PhoneNumber)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Users.UserName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Users.UserName)
+            </dd>
+        </dl>
+    </div>
+</div>
         <table class="table">
             <tr>
                 <th>
@@ -76,11 +69,11 @@
                 </tr>
             }
             </table>
+@Html.ActionLink("New Post", "Create", "Posts", new { id = Model.Id }, new { })
 
-        @Html.ActionLink("New Post", "Create", "Posts", new { id = Model.Id }, new { })
-
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+@if (User.Identity.GetUserId() == Model.Id)
+{
+    <button type="button" class="btn btn-primary">
+        @Html.ActionLink("Edit profile", "Index", "Manage", new { id = Model.Id }, new { })
+    </button>
+}
