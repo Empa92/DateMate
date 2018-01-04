@@ -23,21 +23,22 @@ namespace DateMate.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
+                var us = db.Users.Find(id);
 
-                //if (id == null)
-                //{
-                //    string fileName = HttpContext.Server.MapPath(@"~/Images/noImg.png");
+                if (us.UserPhoto == null)
+                {
+                    string fileName = HttpContext.Server.MapPath(@"~/Content/noImg.png");
 
-                //    byte[] imageData = null;
-                //    FileInfo fileInfo = new FileInfo(fileName);
-                //    long imageFileLength = fileInfo.Length;
-                //    FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
-                //    BinaryReader br = new BinaryReader(fs);
-                //    imageData = br.ReadBytes((int)imageFileLength);
+                    byte[] imageData = null;
+                    FileInfo fileInfo = new FileInfo(fileName);
+                    long imageFileLength = fileInfo.Length;
+                    FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(fs);
+                    imageData = br.ReadBytes((int)imageFileLength);
 
-                //    return File(imageData, "image/png");
+                    return File(imageData, "image/png");
 
-                //}
+                }
                 // to get the user details to load user Image
                 var user = db.Users.Single(x => x.Id == id);
 
@@ -45,7 +46,7 @@ namespace DateMate.Controllers
             }
             else
             {
-                string fileName = HttpContext.Server.MapPath(@"~/Images/noImg.png");
+                string fileName = HttpContext.Server.MapPath(@"~/Content/noImg.png");
 
                 byte[] imageData = null;
                 FileInfo fileInfo = new FileInfo(fileName);

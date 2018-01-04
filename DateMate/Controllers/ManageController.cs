@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using DateMate.Models;
+using System.IO;
 
 namespace DateMate.Controllers
 {
@@ -78,6 +79,60 @@ namespace DateMate.Controllers
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
             return View(model);
+        }
+
+        public ActionResult EditProfile()
+        {
+            var userId = User.Identity.GetUserId();
+            var user = db.Users.Find(userId);
+            var model = new EditProfileViewModel
+            {
+                UserPhoto = user.UserPhoto,
+                Nickname = user.NickName,
+                Location = user.Location,
+                Fabric = user.Fabric
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditProfile([Bind(Exclude = "UserPhoto")] EditProfileViewModel model)
+        {
+            var userId = User.Identity.GetUserId();
+            var user = db.Users.Find(userId);
+
+            if (ModelState.IsValid)
+            {
+                byte[] imageData = null;
+                if (Request.Files.Count > 0)
+                {
+                    HttpPostedFileBase poImgFile = Request.Files["UserPhoto"];
+                    using (var binary = new BinaryReader(poImgFile.InputStream))
+                    {
+                        imageData = binary.ReadBytes(poImgFile.ContentLength);
+                    }
+
+                    user.UserPhoto = imageData;
+                }
+                
+                user.NickName = model.Nickname;
+                user.Location = model.Location;
+                user.Fabric = model.Fabric;
+
+                db.SaveChanges();
+
+            }
+            var mo = new EditProfileViewModel
+            {
+                UserPhoto = model.UserPhoto,
+                Nickname = user.NickName,
+                Location = user.Location,
+                Fabric = user.Fabric
+            };
+
+            return View(mo);
+
         }
 
         //

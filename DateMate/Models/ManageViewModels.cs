@@ -18,6 +18,16 @@ namespace DateMate.Models
         public bool BrowserRemembered { get; set; }
     }
 
+    public class EditProfileViewModel
+    {
+        public byte[] UserPhoto { get; set; }
+        public string Nickname { get; set; }
+        public string Email { get; set; }
+        public string Fabric { get; set; }
+        public string Location { get; set; }
+        public string Interests { get; set; }
+    }
+
     public class ManageLoginsViewModel
     {
         public IList<UserLoginInfo> CurrentLogins { get; set; }

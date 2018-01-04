@@ -1,4 +1,5 @@
 ﻿@model DateMate.Models.ProfileViewModel
+@using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "SeeProfile";
@@ -74,6 +75,6 @@
 @if (User.Identity.GetUserId() == Model.Id)
 {
     <button type="button" class="btn btn-primary">
-        @Html.ActionLink("Edit profile", "Index", "Manage", new { id = Model.Id }, new { })
+        @Html.ActionLink("Edit profile", "EditProfile", "Manage", new { id = Model.Id }, new { })
     </button>
 }
