@@ -50,6 +50,12 @@
         </dl>
     </div>
 </div>
+<div>
+    @if (User.Identity.GetUserId() == Model.Id)
+    {
+        @Html.ActionLink("My friends", "SeeFriends", "Friend")
+    }
+</div>
         <table class="table">
             <tr>
                 <th>

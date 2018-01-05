@@ -278,11 +278,12 @@
     <Content Include="Views\Explore\SeeProfile.cshtml" />
     <Content Include="Views\Posts\Create.cshtml" />
     <Content Include="Views\Manage\EditProfile.cshtml" />
+    <Content Include="Views\Friend\ShowFriendRequest.cshtml" />
+    <Content Include="Views\Friend\SeeFriends.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Friend\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

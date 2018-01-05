@@ -1,0 +1,29 @@
+﻿@model IEnumerable<DateMate.Models.FriendRequest>
+
+@{
+    ViewBag.Title = "ShowFriendRequest";
+}
+
+<h2>ShowFriendRequest</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.From.NickName)
+        </td>
+        <td>
+            @Html.ActionLink("Accept", "AcceptRequest", new { id = item.ID}) |
+            @Html.ActionLink("Deny", "DenyRequest", new { id = item.ID }) |
+        </td>
+    </tr>
+}
+
+</table>

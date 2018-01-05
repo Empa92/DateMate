@@ -38,20 +38,7 @@ namespace DateMate.Controllers
 
             var toUser = db.Users.Single(x => x.Id == id);
             post.To = toUser;
-
             db.Posts.Add(post);
-
-            //if (upload != null && upload.ContentLength > 0)
-            //{
-            //    post.Filename = upload.FileName;
-            //    post.ContentType = upload.ContentType;
-
-            //    using (var reader = new BinaryReader(upload.InputStream))
-            //    {
-            //        post.File = reader.ReadBytes(upload.ContentLength);
-            //    }
-            //}
-
             db.SaveChanges();
             return View();
         }

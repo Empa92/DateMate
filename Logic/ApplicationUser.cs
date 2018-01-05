@@ -13,6 +13,8 @@ namespace DateMate.Models
         public string Location { get; set; }
         public string Fabric { get; set; }
         public byte[] UserPhoto { get; set; }
+        public bool Searchable { get; set; }
+        public bool Sweet { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
         public virtual ICollection<Friend> Friends { get; set; }
         public virtual ICollection<FriendRequest> FriendRequests { get; set; }

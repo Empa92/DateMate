@@ -11,4 +11,15 @@ namespace DateMate.Models
         public ApplicationUser Users { get; set; }
         public ICollection<Post> Posts { get; set; }
     }
+
+    public class ShowFriendRequestViewModel
+    {
+        public ICollection<FriendRequest> From { get; set; }
+    }
+
+    public class MyFriendsViewModel
+    {
+        public ICollection<ApplicationUser> MyFriends { get; set; }
+
+    }
 }

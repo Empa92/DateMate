@@ -25,4 +25,25 @@ namespace DateMate.Models
 
         //public System.Data.Entity.DbSet<DateMate.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
+
+    public class MyInitializer : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
+    {
+        protected override void Seed(ApplicationDbContext context)
+        {
+            var store = new UserStore<ApplicationUser>(context);
+
+            var userManager = new ApplicationUserManager(store);
+
+            for (int i = 0; i < 20; i++)
+            {
+
+                var user = new ApplicationUser { NickName = "user" + i, UserName = $"user{i}@gmail.com", Email = $"user{i}@gmail.com" };
+
+                userManager.CreateAsync(user, "User1!").Wait();
+            }
+
+
+            base.Seed(context);
+        }
+    }
 }

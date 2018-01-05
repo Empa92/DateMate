@@ -24,6 +24,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     @if (Request.IsAuthenticated)
                     {
+                        <li>@Html.ActionLink("My friend request", "ShowFriendRequest", "Friend")</li>
                         <li>@Html.ActionLink("Explore mates", "Explore", "Explore")</li>
 
                         <li>@using (Html.BeginForm("Explore", "Explore", FormMethod.Get))
@@ -35,11 +36,7 @@
                         }
                         </li>
                     }
-                    else
-                    {
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    }
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
