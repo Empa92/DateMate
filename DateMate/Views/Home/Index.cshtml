@@ -1,20 +1,36 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
+ 
 <div class="jumbotron">
     <img src="~/Content/logo.png" />
 </div>
 
-<div class="row">
-    @for
-    <div class="col-md-4">
+<div id="container" style="display:flex; justify-content:center;">
+</div> 
 
-    </div>
-    <div class="col-md-4">
-
-    </div>
-    <div class="col-md-4">
-
-    </div>
-</div>
+@section scripts {
+<script>
+$.ajax({
+    type: "GET",
+    url: '@Url.Action("GetUsers", "UserApi", new { httproute = "" })',
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function (data) {
+        {
+            var img = '@Url.Action("Image", new { id = "imgid" })'.replace("imgid", encodeURIComponent(item.Id));
+            $.each(data, function (i, item) {
+                var userdiv =
+                    "<div id='usercontainer'>" +
+                    "< img width= '150' height= 'auto' src= " + img + " />" +
+                    "<p>" + item.NickName + "</p>" +
+                    "</div>";
+                $('#container').append(userdiv);
+            });
+        }
+    }
+    });
+</script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    @*<script src="~/Scripts/userseed.js"></script>*@
+}

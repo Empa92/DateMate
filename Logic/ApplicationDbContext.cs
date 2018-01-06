@@ -37,7 +37,7 @@ namespace DateMate.Models
             for (int i = 0; i < 20; i++)
             {
 
-                var user = new ApplicationUser { NickName = "user" + i, UserName = $"user{i}@gmail.com", Email = $"user{i}@gmail.com" };
+                var user = new ApplicationUser { NickName = "user" + i, UserName = $"user{i}@gmail.com", Email = $"user{i}@gmail.com", Location = $"N13{i}0", Fabric = $"{i}0%-Polyester" };
 
                 userManager.CreateAsync(user, "User1!").Wait();
             }
