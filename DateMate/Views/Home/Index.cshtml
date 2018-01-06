@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<DateMate.Models.ApplicationUser>
+
+@{
     ViewBag.Title = "Home Page";
 }
  
@@ -6,31 +8,14 @@
     <img src="~/Content/logo.png" />
 </div>
 
-<div id="container" style="display:flex; justify-content:center;">
-</div> 
-
-@section scripts {
-<script>
-$.ajax({
-    type: "GET",
-    url: '@Url.Action("GetUsers", "UserApi", new { httproute = "" })',
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    success: function (data) {
-        {
-            var img = '@Url.Action("Image", new { id = "imgid" })'.replace("imgid", encodeURIComponent(item.Id));
-            $.each(data, function (i, item) {
-                var userdiv =
-                    "<div id='usercontainer'>" +
-                    "< img width= '150' height= 'auto' src= " + img + " />" +
-                    "<p>" + item.NickName + "</p>" +
-                    "</div>";
-                $('#container').append(userdiv);
-            });
-        }
+<div id="container" style="display:flex; justify-content:center; flex-wrap: wrap; text-align: center">
+    @foreach(var item in Model)
+    {
+        <div id='usercontainer'>
+            <a href="@Url.Action("SeeProfile", "Explore", new { id = item.Id } )">
+                <img width='150' height='auto' src=@Url.Action("Image", new {id = item.Id}) />
+            </a>
+            <p>@Html.DisplayFor(modelItem => item.NickName)</p>
+        </div>
     }
-    });
-</script>
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    @*<script src="~/Scripts/userseed.js"></script>*@
-}
+</div>

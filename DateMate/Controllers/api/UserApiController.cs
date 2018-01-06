@@ -10,8 +10,9 @@ namespace DateMate.Controllers.API
 {
     public class UserApiController : ApiController
     {
+        [Route("Controller/api/UserApi/Get")]
         [HttpGet]
-        public List<ApplicationUser> GetUsers()
+        public List<ApplicationUser> Get()
         {
             List<ApplicationUser> list = new List<ApplicationUser>();
 

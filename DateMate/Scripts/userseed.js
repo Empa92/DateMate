@@ -2,7 +2,7 @@ $.ajax({
     type: "Get",
     url: "/Controller/UserApi/GetUsers",
     contentType: "application/json; charset=utf-8",
-    dataType: "json",
+    //dataType: "json",
     success: function (data) {
         {
             var img = '@Url.Action("Image", new {id = "imgid"})'.replace("imgid", encodeURIComponent(item.Id));
