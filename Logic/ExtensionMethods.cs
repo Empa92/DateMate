@@ -29,5 +29,15 @@ namespace DateMate.Logic
                 return false;
             }
         }
+
+        public static ApplicationUser GetUser(string id)
+        {
+            ApplicationUser user;
+            using(ApplicationDbContext db = new ApplicationDbContext())
+            {
+                 user = db.Users.Find(id);
+            }
+            return user;
+        }
     }
 }

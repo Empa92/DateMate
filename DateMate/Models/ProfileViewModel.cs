@@ -20,6 +20,12 @@ namespace DateMate.Models
     public class MyFriendsViewModel
     {
         public ICollection<ApplicationUser> MyFriends { get; set; }
+    }
 
+    public class PostItem
+    {
+        public string To { get; set; }
+        public string From { get; set; }
+        public string Text { get; set; }
     }
 }

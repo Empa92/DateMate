@@ -6,6 +6,8 @@
     ViewBag.Title = "SeeProfile";
 }
 
+
+
 <h2>SeeProfile</h2>
 
 <div style="display: flex; justify-content: center">
@@ -78,7 +80,13 @@
             }
             </table>
 <div>
-        @Html.ActionLink("New Post", "Create", "Posts", new { id = Model.Id }, new { @type = "button", @class = "btn btn-primary" })
+    @if (ExtensionMethods.CheckIfFriends(User.Identity.GetUserId(), Model.Id))
+    {
+        <form name="SendForm" id="SendPost">
+            <textarea id="text" rows="6" cols="300"></textarea>
+            <input type="submit" id="SendPost" value="Write post" />
+        </form>
+    }
 </div>
 <div>
     @if (User.Identity.GetUserId() == Model.Id)
@@ -93,3 +101,27 @@
     }
 </div>
 
+@section scripts {
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#SendPost").submit(function (){
+            var data = { from: "@User.Identity.GetUserId()", to: "@Model.Users.Id", text: $("#text").val()}
+
+            $.ajax({
+                url: '/api/PostApi/Post',
+                type: 'POST',
+                dataType: 'json',
+                data: data,
+                success: function () {
+                    $("#text").reset();
+                    location.reload();
+                },
+                error: function () {
+                    alert("Please write a post.")
+                }
+            });
+        });
+    });
+</script>
+}

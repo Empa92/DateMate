@@ -19,10 +19,10 @@ namespace DateMate
             Database.SetInitializer(new MyInitializer());
             //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
             AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configure(WebbApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            GlobalConfiguration.Configure(WebbApiConfig.Register);
         }
 
     }
