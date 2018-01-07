@@ -1,5 +1,6 @@
 ﻿@model DateMate.Models.ProfileViewModel
 @using Microsoft.AspNet.Identity
+@using DateMate.Logic
 
 @{
     ViewBag.Title = "SeeProfile";
@@ -86,7 +87,7 @@
     }
 </div>
 <div>
-    @if (User.Identity.GetUserId() != Model.Id)
+    @if (User.Identity.GetUserId() != Model.Id && !ExtensionMethods.CheckIfFriends(User.Identity.GetUserId(), Model.Id))
     {
         @Html.ActionLink("Send friend request", "SendFriendRequest", "Friend", new { id = Model.Id }, new { @type = "button", @class = "btn btn-primary"})
     }

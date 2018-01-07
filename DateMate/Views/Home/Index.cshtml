@@ -8,13 +8,22 @@
     <img src="~/Content/logo.png" />
 </div>
 
-<div id="container" style="display:flex; justify-content:center; flex-wrap: wrap; text-align: center">
-    @foreach(var item in Model)
+<div id="container" style="display:flex; justify-content:space-between; flex-wrap: wrap; text-align: center">
+    @foreach(var item in Model.Take(5))
     {
         <div id='usercontainer'>
-            <a href="@Url.Action("SeeProfile", "Explore", new { id = item.Id } )">
-                <img width='150' height='auto' src=@Url.Action("Image", new {id = item.Id}) />
-            </a>
+            @if (Request.IsAuthenticated)
+            {
+                <a href="@Url.Action("SeeProfile", "Explore", new { id = item.Id } )">
+                    <img width='150' height='auto' src=@Url.Action("Image", new {id = item.Id}) />
+                </a>
+            }
+            else
+            {
+                <a href="@Url.Action("Register", "Account")">
+                    <img width='150' height='auto' src=@Url.Action("Image", new {id = item.Id}) />
+                </a>
+            }
             <p>@Html.DisplayFor(modelItem => item.NickName)</p>
         </div>
     }
