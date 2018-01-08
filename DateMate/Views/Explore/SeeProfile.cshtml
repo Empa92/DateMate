@@ -99,19 +99,20 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
-        $("#SendPost").submit(function (){
+        $("#SendPost").submit(function () {
             var data = { from: "@User.Identity.GetUserId()", to: "@Model.Users.Id", text: $("#text").val()}
 
             $.ajax({
+                data: data,
                 url: '/api/PostApi/Post',
                 type: 'POST',
                 dataType: 'json',
-                data: data,
                 success: function () {
                     $("#text").reset();
                     location.reload();
                 },
-                error: function () {
+                error: function (e) {
+                    e.preventDefault();
                     alert("Please write a post.")
                 }
             });

@@ -26,22 +26,5 @@ namespace DateMate.Controllers
         {
             return View();
         }
-
-        //[HttpPost]
-        //public ActionResult Create(Post post, string id)
-        //{
-
-        //    var userName = User.Identity.Name;
-
-        //    var user = db.Users.Single(x => x.UserName == userName);
-
-        //    post.From = user;
-
-        //    var toUser = db.Users.Single(x => x.Id == id);
-        //    post.To = toUser;
-        //    db.Posts.Add(post);
-        //    db.SaveChanges();
-        //    return View();
-        //}
     }
 }
