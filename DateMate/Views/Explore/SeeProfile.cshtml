@@ -8,7 +8,7 @@
 
 
 
-<h2>SeeProfile</h2>
+<h2>Profile</h2>
 
 <div style="display: flex; justify-content: center">
     <div>
@@ -50,7 +50,7 @@
 <div>
     @if (User.Identity.GetUserId() == Model.Id)
     {
-        @Html.ActionLink("My friends", "SeeFriends", "Friend")
+        @Html.ActionLink("My mates", "SeeFriends", "Friend")
     }
 </div>
         <table class="table">
@@ -91,7 +91,7 @@
 <div>
     @if (User.Identity.GetUserId() != Model.Id && !ExtensionMethods.CheckIfFriends(User.Identity.GetUserId(), Model.Id))
     {
-        @Html.ActionLink("Send friend request", "SendFriendRequest", "Friend", new { id = Model.Id }, new { @type = "button", @class = "btn btn-primary"})
+        @Html.ActionLink("Send mate request", "SendFriendRequest", "Friend", new { id = Model.Id }, new { @type = "button", @class = "btn btn-primary"})
     }
 </div>
 

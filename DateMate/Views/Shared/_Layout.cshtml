@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using DateMate.Logic
+@using Microsoft.AspNet.Identity
+
+@{ 
+    int friendreqcount = ExtensionMethods.CountFriendRequests(User.Identity.GetUserId());
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -25,14 +32,18 @@
                 <ul class="nav navbar-nav">
                     @if (Request.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("My friend request", "ShowFriendRequest", "Friend")</li>
+                        if (friendreqcount > 0)
+                        {
+                            <li>@Html.ActionLink(friendreqcount+" mate requests", "ShowFriendRequest", "Friend")</li>
+                        }
+
                         <li>@Html.ActionLink("Explore mates", "Explore", "Explore")</li>
 
                         <li>@using (Html.BeginForm("Explore", "Explore", FormMethod.Get))
                         {
                             <p>
                                 @Html.TextBox("SearchString") 
-                                <input type="submit" value="Sök" />
+                                <input type="submit" value="Search" />
                             </p>
                         }
                         </li>

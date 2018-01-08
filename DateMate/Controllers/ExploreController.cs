@@ -20,9 +20,10 @@ namespace DateMate.Controllers
 
         [HttpPost]
         public ActionResult Explore()
-        { 
-            users = db.Users.ToList();
-            return View(users);
+        {
+            var users = from m in db.Users select m;
+            users = users.Where(s => s.Searchable == true);
+            return View(users.ToList());
         }
 
 
@@ -42,7 +43,7 @@ namespace DateMate.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                users = users.Where(s => s.NickName.Contains(searchString));
+                users = users.Where(s => s.NickName.Contains(searchString) && s.Searchable == true);
             }
 
             return View(users.ToList());

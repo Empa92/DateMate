@@ -25,6 +25,7 @@ namespace DateMate.Models
         public string Email { get; set; }
         public string Fabric { get; set; }
         public string Location { get; set; }
+        public bool Searchable { get; set; }
     }
 
     public class ManageLoginsViewModel

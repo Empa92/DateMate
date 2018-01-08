@@ -163,7 +163,7 @@ namespace DateMate.Controllers
                         imageData = binary.ReadBytes(poImgFile.ContentLength);
                     }
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, NickName = model.NickName, Location = model.Location, Fabric = model.Fabric};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, NickName = model.NickName, Location = model.Location, Fabric = model.Fabric, Searchable = true};
                 user.UserPhoto = imageData;
                 var result = await UserManager.CreateAsync(user, model.Password.ToString());
                 if (result.Succeeded)

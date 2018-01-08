@@ -90,7 +90,8 @@ namespace DateMate.Controllers
                 UserPhoto = user.UserPhoto,
                 Nickname = user.NickName,
                 Location = user.Location,
-                Fabric = user.Fabric
+                Fabric = user.Fabric,
+                Searchable = user.Searchable
             };
 
             return View(model);
@@ -123,6 +124,7 @@ namespace DateMate.Controllers
                 user.NickName = model.Nickname;
                 user.Location = model.Location;
                 user.Fabric = model.Fabric;
+                user.Searchable = model.Searchable;
 
                 db.SaveChanges();
 

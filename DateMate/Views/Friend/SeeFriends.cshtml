@@ -19,13 +19,13 @@
             {
                 @Html.DisplayFor(modelItem => item.To.NickName)
                 @Html.ActionLink("See profile", "SeeProfile", "Explore", new { id = item.To.Id }, new { })
-                @Html.ActionLink("Remove friend", "RemoveFriend", "Friend", new { id = item.ID }, new { })
+                @Html.ActionLink("Remove mate", "RemoveFriend", "Friend", new { id = item.ID }, new { })
             }
             else if (item.To.Id == User.Identity.GetUserId())
             {
                 @Html.DisplayFor(modelItem => item.From.NickName)
                 @Html.ActionLink("See profile", "SeeProfile", "Explore", new { id = item.From.Id }, new { })
-                @Html.ActionLink("Remove friend", "RemoveFriend","Friend", new { id = item.ID }, new { })
+                @Html.ActionLink("Remove mate", "RemoveFriend","Friend", new { id = item.ID }, new { })
             }
         </td>
     </tr>

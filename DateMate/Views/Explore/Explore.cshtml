@@ -20,7 +20,9 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
+    if (item.Searchable == true) { 
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.NickName)
@@ -35,6 +37,7 @@
             @Html.ActionLink("Check out profile", "SeeProfile", new { id = item.Id }, new { }) |
         </td>
     </tr>
+    }
 }
 
 </table>

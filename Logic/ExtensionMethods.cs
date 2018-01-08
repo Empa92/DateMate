@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
 
 namespace DateMate.Logic
 {
@@ -28,6 +29,17 @@ namespace DateMate.Logic
                 }
                 return false;
             }
+        }
+
+        public static int CountFriendRequests(string id)
+        {
+            int count;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var list  = db.FriendRequests.Where(x => x.To.Id == id);
+                count = list.Count();
+            }
+            return count;
         }
 
         public static string GetNickName(string id)
