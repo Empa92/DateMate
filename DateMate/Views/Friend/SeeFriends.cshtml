@@ -17,15 +17,23 @@
         <td>
             @if (item.From.Id == User.Identity.GetUserId())
             {
-                @Html.DisplayFor(modelItem => item.To.NickName)
-                @Html.ActionLink("See profile", "SeeProfile", "Explore", new { id = item.To.Id }, new { })
-                @Html.ActionLink("Remove mate", "RemoveFriend", "Friend", new { id = item.ID }, new { })
+                <td>
+                    @Html.DisplayFor(modelItem => item.To.NickName)
+                </td>
+                <td>
+                @Html.ActionLink("See profile", "SeeProfile", "Explore", new { id = item.To.Id }, new { @type = "button", @class = "btn btn-primary" })
+                @Html.ActionLink("Remove mate", "RemoveFriend", "Friend", new { id = item.ID }, new { @type = "button", @class = "btn btn-primary" })
+                </td>
             }
             else if (item.To.Id == User.Identity.GetUserId())
             {
-                @Html.DisplayFor(modelItem => item.From.NickName)
-                @Html.ActionLink("See profile", "SeeProfile", "Explore", new { id = item.From.Id }, new { })
-                @Html.ActionLink("Remove mate", "RemoveFriend","Friend", new { id = item.ID }, new { })
+                <td>
+                    @Html.DisplayFor(modelItem => item.From.NickName)
+                </td>
+                <td>
+                    @Html.ActionLink("See profile", "SeeProfile", "Explore", new { @type = "button", @class = "btn btn-primary" })
+                    @Html.ActionLink("Remove mate", "RemoveFriend","Friend", new { @type = "button", @class = "btn btn-primary" })
+                </td>
             }
         </td>
     </tr>

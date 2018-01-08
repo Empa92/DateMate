@@ -50,16 +50,10 @@
 <div>
     @if (User.Identity.GetUserId() == Model.Id)
     {
-        @Html.ActionLink("My mates", "SeeFriends", "Friend")
+        @Html.ActionLink("My mates", "SeeFriends", "Friend", new { }, new { @type = "button", @class = "btn btn-primary" })
     }
 </div>
         <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Posts.Single().Text)
-                </th>
-                <th></th>
-            </tr>
 
             @foreach (var item in Model.Posts)
             {

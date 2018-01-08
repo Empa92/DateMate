@@ -73,22 +73,28 @@ namespace DateMate.Controllers
             {
                 return View(model);
             }
-
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+            try
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                // This doesn't count login failures towards account lockout
+                // To enable password failures to trigger account lockout, change to shouldLockout: true
+                var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+                switch (result)
+                {
+                    case SignInStatus.Success:
+                        return RedirectToLocal(returnUrl);
+                    case SignInStatus.LockedOut:
+                        return View("Lockout");
+                    case SignInStatus.RequiresVerification:
+                        return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    case SignInStatus.Failure:
+                    default:
+                        ModelState.AddModelError("", "Invalid login attempt.");
+                        return View(model);
+                }
+            }
+            catch
+            {
+                return View();
             }
         }
 
@@ -110,26 +116,33 @@ namespace DateMate.Controllers
         {
             if (ModelState.IsValid)
             {
-                // To convert the user uploaded Photo as Byte Array before save to DB
-                byte[] imageData = null;
-                if (Request.Files.Count > 0)
+                try
                 {
-                    HttpPostedFileBase poImgFile = Request.Files["UserPhoto"];
-
-                    using (var binary = new BinaryReader(poImgFile.InputStream))
+                    // To convert the user uploaded Photo as Byte Array before save to DB
+                    byte[] imageData = null;
+                    if (Request.Files.Count > 0)
                     {
-                        imageData = binary.ReadBytes(poImgFile.ContentLength);
+                        HttpPostedFileBase poImgFile = Request.Files["UserPhoto"];
+
+                        using (var binary = new BinaryReader(poImgFile.InputStream))
+                        {
+                            imageData = binary.ReadBytes(poImgFile.ContentLength);
+                        }
                     }
+                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email, NickName = model.NickName, Location = model.Location, Fabric = model.Fabric, Searchable = true };
+                    user.UserPhoto = imageData;
+                    var result = await UserManager.CreateAsync(user, model.Password.ToString());
+                    if (result.Succeeded)
+                    {
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    AddErrors(result);
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, NickName = model.NickName, Location = model.Location, Fabric = model.Fabric, Searchable = true};
-                user.UserPhoto = imageData;
-                var result = await UserManager.CreateAsync(user, model.Password.ToString());
-                if (result.Succeeded)
+                catch
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    return RedirectToAction("Index", "Home");
+                    return View();
                 }
-                AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form

@@ -15,8 +15,8 @@ namespace DateMate
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
-        {   
-            Database.SetInitializer(new MyInitializer());
+        {
+            Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebbApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

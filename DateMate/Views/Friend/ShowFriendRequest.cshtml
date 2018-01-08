@@ -18,8 +18,8 @@
             @Html.DisplayFor(modelItem => item.From.NickName)
         </td>
         <td>
-            @Html.ActionLink("Accept", "AcceptRequest", new { id = item.ID}) |
-            @Html.ActionLink("Deny", "DenyRequest", new { id = item.ID }) |
+            @Html.ActionLink("Accept", "AcceptRequest", new { id = item.ID}, new { @type = "button", @class = "btn btn-primary" })
+            @Html.ActionLink("Deny", "DenyRequest", new { id = item.ID }, new { @type = "button", @class = "btn btn-primary" })
         </td>
     </tr>
 }

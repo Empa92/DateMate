@@ -11,9 +11,17 @@ namespace DateMate.Controllers
         // Visar användare på startsidan.
         public ActionResult Index()
         {
-            var users = from m in db.Users
-                        select m;
-            return View(users.ToList());
+            try
+            {
+                var users = from m in db.Users
+                            select m;
+                return View(users.ToList());
+            }
+            catch
+            {
+                return View();
+
+            }
         }
     }
 }

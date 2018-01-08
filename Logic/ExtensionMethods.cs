@@ -36,12 +36,19 @@ namespace DateMate.Logic
         public static int CountFriendRequests(string id)
         {
             int count;
-            using (ApplicationDbContext db = new ApplicationDbContext())
+            try
             {
-                var list  = db.FriendRequests.Where(x => x.To.Id == id);
-                count = list.Count();
+                using (ApplicationDbContext db = new ApplicationDbContext())
+                {
+                    var list = db.FriendRequests.Where(x => x.To.Id == id);
+                    count = list.Count();
+                }
+                return count;
             }
-            return count;
+            catch
+            {
+                return 0;
+            }
         }
         // En metod som hämtar nickname på en användare.
         public static string GetNickName(string id)
