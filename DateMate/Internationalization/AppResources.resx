@@ -118,30 +118,30 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ConfirmPassword" xml:space="preserve">
-    <value>Bekräfta lösenord</value>
+    <value>Confirm password</value>
   </data>
   <data name="CreateNew" xml:space="preserve">
-    <value>Skapa nytt konto</value>
+    <value>Create new account</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
   <data name="Fabric" xml:space="preserve">
-    <value>Tyg</value>
+    <value>Fabric</value>
   </data>
   <data name="Location" xml:space="preserve">
-    <value>Placering</value>
+    <value>Location</value>
   </data>
   <data name="NickName" xml:space="preserve">
-    <value>Användarnamn</value>
+    <value>Nickname</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>Lösenord</value>
+    <value>Password</value>
   </data>
-  <data name="Registrate" xml:space="preserve">
-    <value>Registrera</value>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
   </data>
   <data name="UserPhoto" xml:space="preserve">
-    <value>Profilbild</value>
+    <value>Userphoto</value>
   </data>
 </root>

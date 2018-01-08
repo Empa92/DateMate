@@ -17,7 +17,6 @@ namespace DateMate
         protected void Application_Start()
         {   
             Database.SetInitializer(new MyInitializer());
-            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebbApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

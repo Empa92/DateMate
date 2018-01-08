@@ -61,7 +61,7 @@ namespace DateMate.Internationalization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bekräfta lösenord.
+        ///   Looks up a localized string similar to Confirm password.
         /// </summary>
         public static string ConfirmPassword {
             get {
@@ -70,7 +70,7 @@ namespace DateMate.Internationalization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Skapa nytt konto.
+        ///   Looks up a localized string similar to Create new account.
         /// </summary>
         public static string CreateNew {
             get {
@@ -88,7 +88,7 @@ namespace DateMate.Internationalization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tyg.
+        ///   Looks up a localized string similar to Fabric.
         /// </summary>
         public static string Fabric {
             get {
@@ -97,7 +97,7 @@ namespace DateMate.Internationalization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Placering.
+        ///   Looks up a localized string similar to Location.
         /// </summary>
         public static string Location {
             get {
@@ -106,7 +106,7 @@ namespace DateMate.Internationalization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Användarnamn.
+        ///   Looks up a localized string similar to Nickname.
         /// </summary>
         public static string NickName {
             get {
@@ -115,7 +115,7 @@ namespace DateMate.Internationalization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lösenord.
+        ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string Password {
             get {
@@ -124,16 +124,16 @@ namespace DateMate.Internationalization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Registrera.
+        ///   Looks up a localized string similar to Register.
         /// </summary>
-        public static string Registrate {
+        public static string Register {
             get {
-                return ResourceManager.GetString("Registrate", resourceCulture);
+                return ResourceManager.GetString("Register", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Profilbild.
+        ///   Looks up a localized string similar to Userphoto.
         /// </summary>
         public static string UserPhoto {
             get {
