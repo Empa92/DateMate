@@ -18,6 +18,7 @@ namespace DateMate.Controllers
             return View();
         }
 
+        // Hömtar alla användare som är "searchable" och listar dem.
         [HttpPost]
         public ActionResult Explore()
         {
@@ -27,7 +28,7 @@ namespace DateMate.Controllers
         }
 
 
-
+        // Visar en persons profil.
         public ActionResult SeeProfile(string id)
         {
             var user = db.Users.Find(id);
@@ -35,7 +36,7 @@ namespace DateMate.Controllers
             return View(new ProfileViewModel { Id = id, Users = user, Posts = posts });
         }
 
-        
+        // Sökmetod för användare som visar alla som är sökbara.
         public ActionResult Explore(string searchString)
         {
             var users = from m in db.Users

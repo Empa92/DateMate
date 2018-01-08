@@ -89,7 +89,7 @@
     }
 </div>
 <div>
-    @if (User.Identity.GetUserId() != Model.Id && !ExtensionMethods.CheckIfFriends(User.Identity.GetUserId(), Model.Id))
+    @if (User.Identity.GetUserId() != Model.Id && !ExtensionMethods.CheckIfFriends(User.Identity.GetUserId(), Model.Id) && !ExtensionMethods.CheckRequest(User.Identity.GetUserId(), Model.Id))
     {
         @Html.ActionLink("Send mate request", "SendFriendRequest", "Friend", new { id = Model.Id }, new { @type = "button", @class = "btn btn-primary"})
     }
@@ -97,9 +97,11 @@
 
 @section scripts {
 <script type="text/javascript">
-
+    // Metod för att skicka det man har skrivit till PostApiController
     $(document).ready(function () {
-        $("#SendPost").submit(function () {
+        $("#SendPost").submit(function (e) {
+            e.preventDefault();
+
             var data = { from: "@User.Identity.GetUserId()", to: "@Model.Users.Id", text: $("#text").val()}
 
             $.ajax({
@@ -108,7 +110,7 @@
                 type: 'POST',
                 dataType: 'json',
                 success: function () {
-                    $("#text").reset();
+                    $("#text").val("");
                     location.reload();
                 },
                 error: function (e) {

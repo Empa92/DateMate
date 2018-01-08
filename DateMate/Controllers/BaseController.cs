@@ -19,7 +19,7 @@ namespace DateMate.Controllers
             base.Dispose(disposing);
         }
 
-
+        // Metod som hanterar användarens foton och serialiserar dem till byte-filer. Har dem ingen bild serialiseras en standardbild.
         public FileContentResult Image(string id)
         {
             if (User.Identity.IsAuthenticated)

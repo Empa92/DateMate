@@ -22,6 +22,7 @@ namespace DateMate.Models
         public ICollection<ApplicationUser> MyFriends { get; set; }
     }
 
+    // Fixar så att postcontrollern tar in strings.
     public class PostItem
     {
         public string To { get; set; }

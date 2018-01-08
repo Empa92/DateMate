@@ -268,10 +268,8 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Posts\Post.cshtml" />
     <Content Include="Views\Explore\Explore.cshtml" />
     <Content Include="Views\Explore\SeeProfile.cshtml" />
-    <Content Include="Views\Posts\Create.cshtml" />
     <Content Include="Views\Manage\EditProfile.cshtml" />
     <Content Include="Views\Friend\ShowFriendRequest.cshtml" />
     <Content Include="Views\Friend\SeeFriends.cshtml" />

@@ -83,7 +83,7 @@ namespace DateMate.Controllers
                     {
                         imageData = binary.ReadBytes(poImgFile.ContentLength);
                     }
-
+                    // För att inte uppdatera bilden till ingenting om ingen ny bild har valts.
                     if(imageData.Length > 0)
                     {
                         user.UserPhoto = imageData;

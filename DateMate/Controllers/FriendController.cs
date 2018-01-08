@@ -11,7 +11,7 @@ namespace DateMate.Controllers
 {
     public class FriendController : BaseController
     {
-
+        // Metod för att skicka friend requests.
         public ActionResult SendFriendRequest(string id)
         {
             var user = User.Identity.GetUserId();
@@ -33,6 +33,7 @@ namespace DateMate.Controllers
             return RedirectToAction("Explore", "Explore");
         }
 
+        // Metod för att visa inloggade användarens friend requests.
         public ActionResult ShowFriendRequest()
         {
             var id = User.Identity.GetUserId();
@@ -40,6 +41,7 @@ namespace DateMate.Controllers
             return View(request);
         }
 
+        // Metod för att acceptera friend requests och sedan uppdatera databasen med de nya vännerna.
         public ActionResult AcceptRequest(int id)
         {
             var request = db.FriendRequests.Find(id);
@@ -57,6 +59,7 @@ namespace DateMate.Controllers
             return RedirectToAction("ShowFriendRequest");
         }
 
+        // Metod för att ta bort en nekad friend request.
         public ActionResult DenyRequest(int id)
         {
             var request = db.FriendRequests.Find(id);
@@ -65,6 +68,9 @@ namespace DateMate.Controllers
             return RedirectToAction("ShowFriendRequest");
         }
 
+        // Metod som visar den inloggades användare.
+        // Eftersom en användare kan stå som både To och From i friends-tabellen har vi gjort så
+        // att vi tittar på båda kolumnerna och kör en Union på dem.
         public ActionResult SeeFriends()
         {
             var id = User.Identity.GetUserId();

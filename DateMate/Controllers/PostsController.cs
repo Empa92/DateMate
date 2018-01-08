@@ -21,10 +21,5 @@ namespace DateMate.Controllers
                 var posts = db.Posts.ToList();
                 return View(posts);
         }
-
-        public ActionResult Create(string id)
-        {
-            return View();
-        }
     }
 }

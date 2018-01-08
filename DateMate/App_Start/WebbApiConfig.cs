@@ -8,6 +8,7 @@ namespace DateMate.App_Start
 {
     public class WebbApiConfig
     {
+        // Metod som säger hur webapi ska routas.
         public static void Register(HttpConfiguration config)
         {
             config.MapHttpAttributeRoutes();

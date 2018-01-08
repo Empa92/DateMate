@@ -1,6 +1,6 @@
 ﻿@using DateMate.Logic
 @using Microsoft.AspNet.Identity
-
+<!-- En variabel som får den inloggades antal friend requests -->
 @{ 
     int friendreqcount = ExtensionMethods.CountFriendRequests(User.Identity.GetUserId());
 }
@@ -30,6 +30,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <!-- Om den inloggade har fler än 0 friend requests syns dem i nav-baren. -->
                     @if (Request.IsAuthenticated)
                     {
                         if (friendreqcount > 0)
