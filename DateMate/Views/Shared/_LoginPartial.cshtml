@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
+@using DateMate.Logic
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -7,7 +8,7 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "SeeProfile", "Explore", new { id = User.Identity.GetUserId() }, new { })
+            @Html.ActionLink("Hello " + ExtensionMethods.GetNickName(User.Identity.GetUserId())+ "!", "SeeProfile", "Explore", new { id = User.Identity.GetUserId() }, new { })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>

@@ -126,4 +126,22 @@
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="Fabric" xml:space="preserve">
+    <value>Tyg</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Placering</value>
+  </data>
+  <data name="NickName" xml:space="preserve">
+    <value>Användarnamn</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Lösenord</value>
+  </data>
+  <data name="Registrate" xml:space="preserve">
+    <value>Registrera</value>
+  </data>
+  <data name="UserPhoto" xml:space="preserve">
+    <value>Profilbild</value>
+  </data>
 </root>

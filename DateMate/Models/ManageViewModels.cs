@@ -25,7 +25,6 @@ namespace DateMate.Models
         public string Email { get; set; }
         public string Fabric { get; set; }
         public string Location { get; set; }
-        public string Interests { get; set; }
     }
 
     public class ManageLoginsViewModel
@@ -34,10 +33,7 @@ namespace DateMate.Models
         public IList<AuthenticationDescription> OtherLogins { get; set; }
     }
 
-    public class FactorViewModel
-    {
-        public string Purpose { get; set; }
-    }
+
 
     public class SetPasswordViewModel
     {
@@ -70,26 +66,6 @@ namespace DateMate.Models
         [Display(Name = "Confirm new password")]
         [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-    }
-
-    public class AddPhoneNumberViewModel
-    {
-        [Required]
-        [Phone]
-        [Display(Name = "Phone Number")]
-        public string Number { get; set; }
-    }
-
-    public class VerifyPhoneNumberViewModel
-    {
-        [Required]
-        [Display(Name = "Code")]
-        public string Code { get; set; }
-
-        [Required]
-        [Phone]
-        [Display(Name = "Phone Number")]
-        public string PhoneNumber { get; set; }
     }
 
     public class ConfigureTwoFactorViewModel

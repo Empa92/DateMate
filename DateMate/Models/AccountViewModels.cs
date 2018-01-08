@@ -1,14 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using DateMate.Internationalization;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DateMate.Models
 {
-    public class ExternalLoginConfirmationViewModel
-    {
-        [Required]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-    }
 
     public class ExternalLoginListViewModel
     {
@@ -66,34 +61,34 @@ namespace DateMate.Models
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(ResourceType = typeof(AppResources), Name = nameof(AppResources.Email))]
         public string Email { get; set; }
 
         [Required]
-        [Display(Name = "NickName")]
+        [Display(ResourceType = typeof(AppResources), Name = nameof(AppResources.NickName))]
         public string NickName { get; set; }
 
         public string  UserName { get; set; }
 
         [Required]
-        [Display(Name = "Location")]
+        [Display(ResourceType = typeof(AppResources), Name = nameof(AppResources.Location))]
         public string Location { get; set; }
 
         [Required]
-        [Display(Name = "Fabric")]
+        [Display(ResourceType = typeof(AppResources), Name = nameof(AppResources.Fabric))]
         public string Fabric { get; set; }
 
-        [Display(Name = "UserPhoto")]
+        [Display(ResourceType = typeof(AppResources), Name = nameof(AppResources.UserPhoto))]
         public byte[] UserPhoto { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(ResourceType = typeof(AppResources), Name = nameof(AppResources.Password))]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(ResourceType = typeof(AppResources), Name = nameof(AppResources.ConfirmPassword))]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }

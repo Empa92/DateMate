@@ -15,12 +15,6 @@ namespace DateMate.Controllers
             return View(users.ToList());
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
 
         public ActionResult Contact()
         {

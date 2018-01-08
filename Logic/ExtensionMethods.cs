@@ -30,6 +30,18 @@ namespace DateMate.Logic
             }
         }
 
+        public static string GetNickName(string id)
+        {
+            var nickname = "";
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var user = db.Users.Find(id);
+                nickname = user.NickName;
+
+            }
+            return nickname;
+        }
+
         public static ApplicationUser GetUser(string id)
         {
             ApplicationUser user;

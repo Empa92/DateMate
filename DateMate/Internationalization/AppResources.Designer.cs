@@ -86,5 +86,59 @@ namespace DateMate.Internationalization {
                 return ResourceManager.GetString("Email", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tyg.
+        /// </summary>
+        public static string Fabric {
+            get {
+                return ResourceManager.GetString("Fabric", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Placering.
+        /// </summary>
+        public static string Location {
+            get {
+                return ResourceManager.GetString("Location", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Användarnamn.
+        /// </summary>
+        public static string NickName {
+            get {
+                return ResourceManager.GetString("NickName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lösenord.
+        /// </summary>
+        public static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registrera.
+        /// </summary>
+        public static string Registrate {
+            get {
+                return ResourceManager.GetString("Registrate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profilbild.
+        /// </summary>
+        public static string UserPhoto {
+            get {
+                return ResourceManager.GetString("UserPhoto", resourceCulture);
+            }
+        }
     }
 }
